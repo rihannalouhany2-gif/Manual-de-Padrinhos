@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code - Lista de Presentes</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f8f5f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.qr-container{
+    background:white;
+    border-radius:15px;
+    padding:40px;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    text-align:center;
+    max-width:500px;
+}
+
+h1{
+    color:#7B1E3C;
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+p{
+    color:#555;
+    margin-bottom:30px;
+    font-size:16px;
+}
+
+#qrcode{
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+}
+
+.link{
+    color:#7B1E3C;
+    text-decoration:none;
+    word-break:break-all;
+    font-size:14px;
+    margin-top:20px;
+    padding:10px;
+    background:#f8f5f6;
+    border-radius:5px;
+}
+
+.download-btn{
+    background:#7B1E3C;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:20px;
+    transition:background 0.3s;
+}
+
+.download-btn:hover{
+    background:#5a1629;
+}
+
+.info{
+    background:#f0e6eb;
+    padding:15px;
+    border-radius:5px;
+    margin-top:20px;
+    color:#7B1E3C;
+    font-size:14px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="qr-container">
+    <h1>🎁 Lista de Presentes 🎁</h1>
+    <p>Eliane Maria e Emerson Marques</p>
+    
+    <div id="qrcode"></div>
+    
+    <div class="link">
+        <a href="https://rihannalouhany2-gif.github.io/Manual-de-Padrinhos/presentes.html" target="_blank">
+            https://rihannalouhany2-gif.github.io/Manual-de-Padrinhos/presentes.html
+        </a>
+    </div>
+    
+    <button class="download-btn" onclick="downloadQRCode()">⬇️ Baixar QR Code</button>
+    
+    <div class="info">
+        📱 Escaneie com seu celular para acessar a lista de presentes!
+    </div>
+</div>
+
+<script>
+// Gerar QR Code
+new QRCode(document.getElementById("qrcode"), {
+    text: "https://rihannalouhany2-gif.github.io/Manual-de-Padrinhos/presentes.html",
+    width: 300,
+    height: 300,
+    colorDark: "#7B1E3C",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+});
+
+// Função para baixar QR Code
+function downloadQRCode() {
+    const canvas = document.querySelector('#qrcode canvas');
+    const link = document.createElement('a');
+    link.download = 'QR-Code-Lista-Presentes.png';
+    link.href = canvas.toDataURL();
+    link.click();
+}
+</script>
+
+</body>
+</html>
